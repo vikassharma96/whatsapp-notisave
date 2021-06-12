@@ -34,7 +34,10 @@ jobs:
           java-version: 1.14
       
       - name: Run Linter
-        run: ./gradlew clean check  
+        uses: yutailang0119/action-android-lint@v1.0.2
+        with:
+           name: Lint
+           path: ${{ github.workspace}}/app/build/reports/lint-results.html
 
       - name: Build the app
         run: ./gradlew assembleDebug
