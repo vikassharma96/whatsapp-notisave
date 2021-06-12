@@ -1,4 +1,4 @@
-name: Check PR build
+name: PR build
 
 on:
   # Triggers the workflow on every pull request to master branch
@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: debug apk
-          path: app/build/outputs/apk/debug/RestoreMessage.apk
+          path: app/
