@@ -33,11 +33,15 @@ jobs:
         with:
           java-version: 1.14
       
-      - name: Run Linter
-      - run: ./gradlew lint
-      - uses: yutailang0119/action-android-lint@v1.0.2
+      - name: Run linter
+        run: ./gradlew clean check
+        
+      - name: Upload lint file
+        uses: actions/upload-artifact@v2
         with:
-          xml_path: ${{ github.workspace}}/app/build/reports/lint-results.xml
+          name: Lint
+          path: ${{ github.workspace}}/app/build/reports/lint-results.html
+        
 
       - name: Build the app
         run: ./gradlew assembleDebug
