@@ -33,8 +33,8 @@ jobs:
         with:
           java-version: 1.14
       
-      - name: Run Kotlin Linter
-        run: ./gradlew ktlintStagingDebugCheck
+      - name: Run Linter
+        run: ./gradlew clean check  
 
       - name: Build the app
         run: ./gradlew assembleDebug
