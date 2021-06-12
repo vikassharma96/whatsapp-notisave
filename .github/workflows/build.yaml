@@ -37,7 +37,7 @@ jobs:
       - run: ./gradlew lint
       - uses: yutailang0119/action-android-lint@v1.0.2
         with:
-          xml_path: ${{ github.workspace}}/app/build/reports/lint-results.html
+          xml_path: ${{ github.workspace}}/app/build/reports/lint-results.xml
 
       - name: Build the app
         run: ./gradlew assembleDebug
