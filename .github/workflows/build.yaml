@@ -42,5 +42,5 @@ jobs:
       - name: Upload apk
         uses: actions/upload-artifact@v2
         with:
-          name: debug apk
+          name: debug apk "NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
           path: ${{ github.workspace}}/app/build/outputs/apk/debug/app-debug.apk
