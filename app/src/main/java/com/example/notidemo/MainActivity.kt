@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import android.text.Html
+import android.text.SpannableString
 import android.text.TextUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-
 
 class MainActivity : AppCompatActivity() {
     var customer:CustomResultReceiver? = null
@@ -22,12 +22,15 @@ class MainActivity : AppCompatActivity() {
                 val pack = intent!!.getStringExtra("package")
                 val title = intent.getStringExtra("title")
                 val text = intent.getStringExtra("text")
-                runOnUiThread(object : Runnable {
-                    override fun run() {
-                        textview!!.setTextColor(Color.parseColor("#0B0719"))
-                        textview!!.text = Html.fromHtml("$pack<br><b>$title : </b>$text")
+                runOnUiThread {
+                    val extras = intent.extras;
+                    val stringBuilder = StringBuilder();
+                    extras?.keySet()?.forEach { key ->
+                        stringBuilder.append(extras.get(key) ?: "").append("\n")
                     }
-                })
+                    textview!!.setTextColor(Color.parseColor("#0B0719"))
+                    textview!!.text = stringBuilder
+                }
 
             }
         }
