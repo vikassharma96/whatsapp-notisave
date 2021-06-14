@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
                     extras?.keySet()?.forEach { key ->
                         stringBuilder.append(extras.get(key) ?: "").append("\n")
                     }
+                    stringBuilder.append(intent.toString())
                     textview!!.setTextColor(Color.parseColor("#0B0719"))
                     textview!!.text = stringBuilder
                 }
